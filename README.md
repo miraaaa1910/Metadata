@@ -9,15 +9,19 @@ I ran exiftool, a powerful command-line application used for reading, writing, a
 
 # 2. Hexeditor
 
-![image]()
-![image]()
+I executed the command hexeditor computer.jpg in the Kali terminal. This opens an interactive interface that maps out the file's DNA. The first thing to check in any forensic investigation is the Header. Look at the very first four bytes at offset 00000000. Data: FF D8 FF E0. These are the standard "Magic Bytes" for a JPEG file. This confirms the file is not a renamed PNG or executable; it is a genuine image file.
+
+On the far right side, the editor attempts to translate the hex code into human-readable text (ASCII). You can clearly see JFIF, ICC_PROFILE, and lcms.
+
+These match the results from my previous exiftool and strings commands. The hex editor shows exactly where this metadata lives—right at the start of the file before the actual image data begins.
+
+![image](https://github.com/miraaaa1910/Metadata/blob/5ffc6d238263e51f24f39d1c964a22741bf17f1a/Screenshot%202026-04-02%20141459.png )
 
 # 3. Binwalk
 
 I ran binwalk dog.jpg. Binwalk is a tool that looks for file signatures inside other files. It discovered that at decimal offset 88221, there is a Zip archive hidden inside the JPEG image. While not shown in the command history, I used binwalk -e dog.jpg to automatically extract the hidden files. This created a new folder _dog.jpg.extracted. Inside that folder, a Zip file (1589D.zip) and a text file were found. Finally, I navigated into the folder and used the cat command to read hidden_text.txt. The Result "THIS IS A HIDDEN FLAG"
 
 ![image]( https://github.com/miraaaa1910/Metadata/blob/a27bd29319f158bb5878c78ae9c728a8ad9e7851/Screenshot%202026-04-02%20135811.png )
-![image]() 
 
 # 4. Strings
 
