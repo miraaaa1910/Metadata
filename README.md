@@ -20,7 +20,10 @@ I ran binwalk dog.jpg. Binwalk is a tool that looks for file signatures inside o
 ![image]() 
 
 # 4. Strings
-![image]()
+
+Most of a .jpg file is composed of unreadable binary code used to render pixels. The strings utility ignores all that "garbage" data and only prints sequences of 4 or more printable characters. You can see strings like JFIF, ICC_PROFILE, and lcms. These are standard markers that tell software how to handle the image's colors and format. Further down, you see strings like #*%*%525EE\. These aren't actual words; they are just random bytes in the compressed image data that happen to look like text characters.
+
+![image](https://github.com/miraaaa1910/Metadata/blob/3ad568f4fb12980cbf52f3ad433a6f1d08f4d737/Screenshot%202026-04-03%20185839.png )
 
 # 5. File
 
